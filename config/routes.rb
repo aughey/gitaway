@@ -50,8 +50,32 @@ Mygithub::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
 
+  resources :passwords,
+    :controller => 'clearance/passwords',
+    :only       => [:new, :create]
+
+  resource  :session,
+    :controller => 'clearance/sessions',
+    :only       => [:new, :create, :destroy]
+
+  resources :users, :controller => 'clearance/users', :only => [:new, :create] do
+    resource :password,
+      :controller => 'clearance/passwords',
+      :only       => [:create, :edit, :update]
+
+    resource :confirmation,
+      :controller => 'clearance/confirmations',
+      :only       => [:new, :create]
+  end
+
+  match 'sign_up'  => 'clearance/users#new', :as => 'sign_up'
+  match 'sign_in'  => 'clearance/sessions#new', :as => 'sign_in'
+  match 'sign_out' => 'clearance/sessions#destroy', :via => :delete, :as => 'sign_out'
+
+  resources :u, :controller => 'u'
+  resources :repositories
+
   # See how all your routes lay out with "rake routes"
-  resources :users
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
