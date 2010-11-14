@@ -1,0 +1,6 @@
+= header
+
+= render :partial => 'path', :object => @path
+
+- if @blob.mime_type == "text/plain"
+  %pre= @blob.data

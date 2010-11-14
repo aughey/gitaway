@@ -1,0 +1,12 @@
+%h2.path
+  - paths = path.split('/') 
+  - last = paths.pop || ""
+  = link_to(@r,"#{@r.path}/tree/#{@branch}")
+  - for p in paths
+    - if p != ""
+      = "/"
+      = link_to(p,"#{@r.path}/tree/#{@branch}/#{p}")
+  - if last != ""
+    = "/" + last
+  == (#{@branch})
+

@@ -23,6 +23,23 @@ class RepositoriesController < ApplicationController
     render :action => 'show'
   end
 
+  def blob
+    @r ||= Repository.find(params[:id])
+    raise "Cannot see" unless @r.user == current_user
+    @branch ||= params[:branch]
+    @grit = @r.grit
+    @head = @grit.get_head(@branch)
+    @commit = @head.commit
+    @tree = @commit.tree
+    if params[:path]
+      @path = params[:path]
+      @blob = @tree / params[:path]
+    else
+      @path = ""
+    end
+    raise "not a blob" unless @blob.is_a?(Grit::Blob)
+  end
+
   def commits
     @r ||= Repository.find(params[:id])
     raise "Cannot see" unless @r.user == current_user

@@ -13,6 +13,6 @@
         %td message
     - for b in @tree.blobs
       %tr
-        %td= blob_link(@r,b)
+        %td= blob_link(@r,@branch,@path,b.name)
         %td age
         %td message

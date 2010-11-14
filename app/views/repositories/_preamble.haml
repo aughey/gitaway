@@ -5,11 +5,4 @@
 .lastcommit
   = render :partial => 'commit', :object => @commit
 
-%h2.path
-  = link_to(@r,"#{@r.path}/tree/#{@branch}")
-  - for p in @path.split('/')
-    - if p != ""
-      = "/"
-      = link_to(p,"#{@r.path}/tree/#{@branch}/#{p}")
-  == (#{@branch})
-
+= render :partial => 'path', :object => @path

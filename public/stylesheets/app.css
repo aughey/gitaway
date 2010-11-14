@@ -33,6 +33,10 @@ table {
   width: 100%;
 }
 
+table td {
+  padding: 0px;
+}
+
 .commit {
   border: 1px solid blue;
   background-color: #eef;
@@ -54,5 +58,4 @@ table {
 
 .files table td {
   background-color: #dddddd;
-  padding: .2em;
 }

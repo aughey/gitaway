@@ -15,8 +15,8 @@ module ApplicationHelper
     render :partial => 'commit', :object => c
   end
 
-  def blob_link(r,b)
-    link_to(b.name,"#{r.path}/blob/master/#{b.name}")
+  def blob_link(r,branch,prefix,name)
+    link_to(name,"#{r.path}/blob/#{branch}#{prefix}/#{name}")
   end
 
   def tree_link(r,branch,prefix,name)
