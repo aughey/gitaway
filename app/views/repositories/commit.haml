@@ -1,0 +1,12 @@
+= header
+= commit(@commit)
+
+.filechanges
+  %ul
+    - for f in @commit.stats.files
+      %li== #{f[0]} #{f[1]} adds, #{f[2]} deletes
+
+.diffs
+  %ul
+    - for d in @commit.diffs
+      %pre= d.diff

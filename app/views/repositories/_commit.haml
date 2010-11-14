@@ -1,0 +1,13 @@
+.commit
+  %table
+    %tr
+      %td.info
+        .message= commit.message
+        .author= commit.author
+        .date= commit.authored_date
+      %td.git
+        %ul
+          %li== commit #{link_to(commit.id[0,20],"/repositories/#{@r.id}/commit/#{commit.id}")}
+          %li== tree #{link_to(commit.tree.id[0,20],"/repositories/#{@r.id}/tree/#{commit.tree.id}")}
+          %li== parent #{link_to(commit.parents.first.id[0,20],"/repositories/#{@r.id}/parent/#{commit.parents.first}")}
+

@@ -1,0 +1,58 @@
+body {
+  margin:50px 0px; padding:0px;
+  text-align:center;
+}
+
+.rlinks li {
+  display: inline;
+  list-style-type;
+  padding: 1em;
+}
+
+.branches h2 {
+  margin: 2px;
+}
+
+.branches ul {
+  margin-top: 0px;
+}
+
+.branchlinks li {
+  display: inline;
+  list-style-type;
+  padding: 1em;
+}
+
+#Content {
+  width:950px;
+  margin:0px auto;
+  text-align:left;
+}
+
+table {
+  width: 100%;
+}
+
+.commit {
+  border: 1px solid blue;
+  background-color: #eef;
+  margin-bottom: 1em;
+}
+
+.commit .git {
+  font-size: 75%;
+  border-left: 1px solid blue;
+}
+
+.commit td.info {
+  width: 65%;
+}
+
+.files table th {
+  background-color: #aaaaaa;
+}
+
+.files table td {
+  background-color: #dddddd;
+  padding: .2em;
+}

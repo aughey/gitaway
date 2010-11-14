@@ -23,6 +23,21 @@ class RepositoriesController < ApplicationController
     render :action => 'show'
   end
 
+  def commits
+    @r ||= Repository.find(params[:id])
+    raise "Cannot see" unless @r.user == current_user
+    @branch ||= params[:branch]
+    @grit = @r.grit
+    @commits = @grit.commits
+  end
+
+  def commit
+    @r ||= Repository.find(params[:id])
+    raise "Cannot see" unless @r.user == current_user
+    @grit = @r.grit
+    @commit = @grit.commit(params[:commit])
+  end
+
   def create
     r = Repository.new(params[:repository])
     r.user = current_user

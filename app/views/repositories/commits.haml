@@ -1,0 +1,6 @@
+= header
+
+%h1== #{@r.name} / Commit History
+
+- for c in @commits
+  = render :partial => 'commit', :object => c

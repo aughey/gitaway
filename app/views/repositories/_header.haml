@@ -1,0 +1,14 @@
+.title
+  == #{l(@r.user)} / #{l(@r)}
+
+.rlinks
+  %ul
+    %li Source
+    %li= link_to("Commits","#{@r.path}/commits/#{@branch}")
+
+.branches
+  %h2 Branches
+  %ul
+    - for b in @grit.heads
+      %li= link_to(b.name,"#{@r.path}/tree/#{b.name}#{@path}")
+
