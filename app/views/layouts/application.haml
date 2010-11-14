@@ -6,7 +6,7 @@
     = csrf_meta_tag
 
   %body
-    - if current_user
-      %p== You are logged in as #{l current_user} (UserID: #{current_user.id})
     #content{:class => @contentclass || "content"}
+      - if current_user
+        %p== You are logged in as #{l current_user} (UserID: #{current_user.id})
       =yield
