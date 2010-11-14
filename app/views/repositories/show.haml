@@ -1,18 +1,18 @@
 = render :partial => 'preamble'
 
-.files
-  %table
-    %tr
-      %th name
-      %th age
-      %th message
-    - for t in @tree.trees
+- if @tree
+  .files
+    %table
       %tr
-        %td= tree_link(@r,@branch,@path,t.name)
-        %td age
-        %td message
-    - for b in @tree.blobs
-      %tr
-        %td= blob_link(@r,@branch,@path,b.name)
-        %td age
-        %td message
+        %th name
+        %th age
+      - for t in @tree.trees
+        %tr
+          %td= tree_link(@r,@branch,@path,t.name)
+          %td &nbsp;
+      - for b in @tree.blobs
+        %tr
+          %td= blob_link(@r,@branch,@path,b.name)
+          %td= b.size
+- else
+  No commit yet against this repository

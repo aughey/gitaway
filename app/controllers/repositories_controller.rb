@@ -14,8 +14,10 @@ class RepositoriesController < ApplicationController
     @branch ||= params[:branch]
     @grit = @r.grit
     @head = @grit.get_head(@branch)
-    @commit = @head.commit
-    @tree = @commit.tree
+    if @head
+      @commit = @head.commit
+      @tree = @commit.tree
+    end
     if params[:path]
       @tree = @tree / params[:path]
     end

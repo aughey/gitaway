@@ -74,7 +74,7 @@ Mygithub::Application.routes.draw do
 
   resources :u, :controller => 'u'
 
-  #resources :repositories
+  resources :repositories
   match 'repositories/:id', :controller => 'repositories', :action => 'show'
   match 'repositories/:id/tree/:branch/*path', :controller => 'repositories', :action => 'show_tree'
   match 'repositories/:id/tree/:branch', :controller => 'repositories', :action => 'show_tree'
