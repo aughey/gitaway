@@ -1,1 +1,48 @@
-%h1= @r.name
+.title
+  == #{l(@r.user)} / #{l(@r)}
+
+.rlinks
+  %ul
+    %li Source
+    %li Commits
+
+.branchlinks
+  %ul
+    %li Switch Branches
+    %li Switch Tags
+    %li 
+      Branches
+      %ul
+        - for b in @grit.heads
+          %li= link_to(b.name,"#{@r.path}/tree/#{b.name}#{@path}")
+
+= h @r.description
+
+.lastcommit
+  .info
+    .message= @commit.message
+    .author= @commit.author
+    .date= @commit.authored_date
+  .git
+    %ul
+      %li== commit #{link_to(@commit.id,"/repositories/#{@r.id}/commit/#{@commit.id}")}
+      %li== tree #{link_to(@tree.id,"/repositories/#{@r.id}/tree/#{@tree.id}")}
+      %li== parent #{link_to(@commit.parents.first,"/repositories/#{@r.id}/parent/#{@commit.parents.first}")}
+
+= link_to @r,"/#{@r.path}/tree/master"
+
+%table
+  %tr
+    %th name
+    %th age
+    %th message
+  - for t in @tree.trees
+    %tr
+      %td= tree_link(@r,@branch,@path,t.name)
+      %td age
+      %td message
+  - for b in @tree.blobs
+    %tr
+      %td= blob_link(@r,b)
+      %td age
+      %td message

@@ -1,1 +1,7 @@
-U index
+%p= link_to "Create a new repository","/repositories/new"
+
+%h1 Your Repositories
+
+%ul
+  - for r in current_user.repositories
+    %li= l(r)

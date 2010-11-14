@@ -73,7 +73,11 @@ Mygithub::Application.routes.draw do
   match 'sign_out' => 'clearance/sessions#destroy', :via => :delete, :as => 'sign_out'
 
   resources :u, :controller => 'u'
-  resources :repositories
+
+  #resources :repositories
+  match 'repositories/:id', :controller => 'repositories', :action => 'show'
+  match 'repositories/:id/tree/:branch/*path', :controller => 'repositories', :action => 'show_tree'
+  match 'repositories/:id/tree/:branch', :controller => 'repositories', :action => 'show_tree'
 
   # See how all your routes lay out with "rake routes"
 

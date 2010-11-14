@@ -4,8 +4,23 @@ class RepositoriesController < ApplicationController
   end
 
   def show
-    @r = Repository.find(params[:id])
+    @branch = 'master'
+    show_tree
+  end
+
+  def show_tree
+    @r ||= Repository.find(params[:id])
     raise "Cannot see" unless @r.user == current_user
+    @branch ||= params[:branch]
+    @grit = @r.grit
+    @head = @grit.get_head(@branch)
+    @commit = @head.commit
+    @tree = @commit.tree
+    if params[:path]
+      @tree = @tree / params[:path]
+    end
+    @path = params[:path] ? "/" + params[:path] : ""
+    render :action => 'show'
   end
 
   def create
