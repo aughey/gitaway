@@ -14,4 +14,19 @@ The goals of GitAway are basic and are as follows:
 * Do not replace github:fi (even thinner ice here)
 * Provide the most needed features.  80% solution
 
-GitAway was created to fill the need 
+## Features
+
+As stated before, this is not intended to duplicate github.  While
+it is modeled very heavily on github, I do not intend to duplicate
+every feature.  Only the commonly used tasks (as defined by me) are
+included.
+
+* User Repositories
+** Public Repositories
+** Private Repositories
+* Repository Navigation
+** Branches
+** Trees
+* Collaboration
+** Forking
+** Multi-user access to repositories
