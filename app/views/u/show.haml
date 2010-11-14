@@ -1,0 +1,7 @@
+%p= link_to "Create a new repository","/repositories/new"
+
+%h1== #{@user} Repositories
+
+%ul
+  - for r in @user.repositories
+    %li= l(r)

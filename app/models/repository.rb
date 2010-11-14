@@ -13,6 +13,11 @@ class Repository < ActiveRecord::Base
     @grit ||= Grit::Repo.new(git_path)
   end
 
+  def after_create
+    FileUtils.mkdir_p(git_path)
+    system("cd #{git_path} ; git init --bare")
+  end
+
   protected
 
   def git_path

@@ -61,9 +61,6 @@ class RepositoriesController < ApplicationController
 
     r.save!
 
-    FileUtils.mkdir_p(r.path)
-    system("cd #{r.path} ; git init --bare")
-
     redirect_to r
   end
 end

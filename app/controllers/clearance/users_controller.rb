@@ -4,10 +4,13 @@ class Clearance::UsersController < ApplicationController
   skip_before_filter :authenticate, :only => [:new, :create]
   before_filter :redirect_to_root,  :only => [:new, :create], :if => :signed_in?
 
-
   def new
     @user = ::User.new(params[:user])
     render :template => 'users/new'
+  end
+
+  def show
+    redirect_to "/u/#{params[:id]}"
   end
 
   def create
