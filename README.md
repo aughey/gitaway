@@ -53,6 +53,7 @@ another tool, etc.  These non-features are...
 * gist (supported for free elsewhere)
 * wiki (This is a single-tool package, do wikis elsewhere)
 * Static page hosting (Host elsewhere)
+* Event history
 
 ## Possible Features
 
