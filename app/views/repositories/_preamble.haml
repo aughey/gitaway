@@ -5,4 +5,5 @@
 - if @commit
   = render :partial => 'commit', :object => @commit
 
-= render :partial => 'path', :object => @path
+- if @path
+  = render :partial => 'path', :object => @path

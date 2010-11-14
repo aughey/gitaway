@@ -5,9 +5,9 @@
       %th Size
     - for t in tree.trees
       %tr
-        %td= tree_link(@r,@branch,@path,t.name)
+        %td= tree_link(@r,@branch,@path,t)
         %td [Directory]
     - for b in tree.blobs
       %tr
-        %td= blob_link(@r,@branch,@path,b.name)
+        %td= blob_link(@r,@branch,@path,b)
         %td= b.size

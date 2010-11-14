@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Mygithub::Application.load_tasks
+Gitaway::Application.load_tasks

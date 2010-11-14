@@ -6,7 +6,8 @@
     %li Source
     %li= link_to("Commits","#{@r.path}/commits/#{@branch}")
 
-%p== Viewing branch #{@branch}
+- if @branch
+  %p== Viewing branch #{@branch}
 
 .branches
   %h2 Branches

@@ -1,4 +1,4 @@
-Mygithub::Application.routes.draw do
+Gitaway::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -77,7 +77,7 @@ Mygithub::Application.routes.draw do
   resources :repositories
 
   match 'repositories/:id/tree/:treeid', :controller => 'repositories', :action => 'tree'
-  match 'repositories/:id/blob/:branch/*path', :controller => 'repositories', :action => 'blob'
+  match 'repositories/:id/blob/:blobid', :controller => 'repositories', :action => 'blob'
   match 'repositories/:id/commits/:branch', :controller => 'repositories', :action => 'commits'
   match 'repositories/:id/commit/:commit', :controller => 'repositories', :action => 'commit'
   match 'repositories/:id', :controller => 'repositories', :action => 'show'

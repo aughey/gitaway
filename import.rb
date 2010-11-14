@@ -13,7 +13,7 @@ for d in ARGV
     r = u.repositories.create(:name => File::basename(d))
     g = Grit::Repo.new(d)
     for b in g.branches
-      system("cd #{d} ; git push /home/jha/src/current/mygithub/REPOS/#{r.id}.git #{b.name}")
+      system("cd #{d} ; git push /home/jha/src/current/gitaway/REPOS/#{r.id}.git #{b.name}")
     end
   end
 end

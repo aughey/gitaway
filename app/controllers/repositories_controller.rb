@@ -32,15 +32,7 @@ class RepositoriesController < ApplicationController
     raise "Cannot see" unless @r.user == current_user
     @branch ||= params[:branch]
     @grit = @r.grit
-    @head = @grit.get_head(@branch)
-    @commit = @head.commit
-    @tree = @commit.tree
-    if params[:path]
-      @path = params[:path]
-      @blob = @tree / params[:path]
-    else
-      @path = ""
-    end
+    @blob = @grit.blob(params[:blobid])
     raise "not a blob" unless @blob.is_a?(Grit::Blob)
   end
 
