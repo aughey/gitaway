@@ -75,12 +75,14 @@ Mygithub::Application.routes.draw do
   resources :u, :controller => 'u'
 
   resources :repositories
-  match 'repositories/:id', :controller => 'repositories', :action => 'show'
-  match 'repositories/:id/tree/:branch/*path', :controller => 'repositories', :action => 'show_tree'
-  match 'repositories/:id/tree/:branch', :controller => 'repositories', :action => 'show_tree'
+
+  match 'repositories/:id/tree/:treeid', :controller => 'repositories', :action => 'tree'
   match 'repositories/:id/blob/:branch/*path', :controller => 'repositories', :action => 'blob'
   match 'repositories/:id/commits/:branch', :controller => 'repositories', :action => 'commits'
   match 'repositories/:id/commit/:commit', :controller => 'repositories', :action => 'commit'
+  match 'repositories/:id', :controller => 'repositories', :action => 'show'
+  match 'repositories/:id/:branch', :controller => 'repositories', :action => 'show'
+  match 'repositories/:id/:branch/*path', :controller => 'repositories', :action => 'show'
 
   # See how all your routes lay out with "rake routes"
 

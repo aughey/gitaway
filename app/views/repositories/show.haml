@@ -1,18 +1,8 @@
 = render :partial => 'preamble'
 
-- if @tree
-  .files
-    %table
-      %tr
-        %th name
-        %th age
-      - for t in @tree.trees
-        %tr
-          %td= tree_link(@r,@branch,@path,t.name)
-          %td &nbsp;
-      - for b in @tree.blobs
-        %tr
-          %td= blob_link(@r,@branch,@path,b.name)
-          %td= b.size
+- if @tree.is_a?(Grit::Blob)
+  = render :partial => 'blob', :object => @tree
+- elsif @tree.is_a?(Grit::Tree)
+  = render :partial => 'tree', :object => @tree
 - else
   No commit yet against this repository

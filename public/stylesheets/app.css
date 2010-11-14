@@ -52,10 +52,10 @@ table td {
   width: 65%;
 }
 
-.files table th {
+.tree table th {
   background-color: #aaaaaa;
 }
 
-.files table td {
+.tree table td {
   background-color: #dddddd;
 }

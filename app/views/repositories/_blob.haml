@@ -1,0 +1,6 @@
+- oktypes = ["text/plain","application/python","application/ruby"]
+
+- if oktypes.include?(blob.mime_type)
+  %pre= blob.data
+- else
+  %p== Unknown mime type #{blob.mime_type}

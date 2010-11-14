@@ -8,7 +8,9 @@
       %td.git
         %ul
           %li== commit #{link_to(commit.id[0,20],"/repositories/#{@r.id}/commit/#{commit.id}")}
-          %li== tree #{link_to(commit.tree.id[0,20],"/repositories/#{@r.id}/tree/#{commit.tree.id}")}
+          %li== tree #{commit.tree.id[0,20]}
+          - # #{link_to(commit.tree.id[0,20],"/repositories/#{@r.id}/tree/#{commit.tree.id}")}
           - unless commit.parents.empty?
-            %li== parent #{link_to(commit.parents.first.id[0,20],"/repositories/#{@r.id}/parent/#{commit.parents.first}")}
+            %li== parent #{commit.parents.first.id[0,20]}
+            - # %li== parent #{link_to(commit.parents.first.id[0,20],"/repositories/#{@r.id}/parent/#{commit.parents.first}")}
 

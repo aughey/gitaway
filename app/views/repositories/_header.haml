@@ -6,9 +6,11 @@
     %li Source
     %li= link_to("Commits","#{@r.path}/commits/#{@branch}")
 
+%p== Viewing branch #{@branch}
+
 .branches
   %h2 Branches
   %ul
     - for b in @grit.heads
-      %li= link_to(b.name,"#{@r.path}/tree/#{b.name}#{@path}")
+      %li= link_to(b.name,"#{@r.path}/#{b.name}#{@path}")
 

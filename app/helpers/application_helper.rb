@@ -16,10 +16,10 @@ module ApplicationHelper
   end
 
   def blob_link(r,branch,prefix,name)
-    link_to(name,"#{r.path}/blob/#{branch}#{prefix}/#{name}")
+    link_to(name,"#{r.path}/#{branch}#{prefix}/#{name}")
   end
 
   def tree_link(r,branch,prefix,name)
-    link_to("[D]" + name,"#{r.path}/tree/#{branch}#{prefix}/#{name}")
+    link_to("[D]" + name,"#{r.path}/#{branch}#{prefix}/#{name}")
   end
 end

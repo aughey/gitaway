@@ -4,14 +4,10 @@ class RepositoriesController < ApplicationController
   end
 
   def show
-    @branch = 'master'
-    show_tree
-  end
-
-  def show_tree
     @r ||= Repository.find(params[:id])
     raise "Cannot see" unless @r.user == current_user
-    @branch ||= params[:branch]
+    @branch = params[:branch]
+    @branch ||= 'master'
     @grit = @r.grit
     @head = @grit.get_head(@branch)
     if @head
@@ -22,7 +18,13 @@ class RepositoriesController < ApplicationController
       @tree = @tree / params[:path]
     end
     @path = params[:path] ? "/" + params[:path] : ""
-    render :action => 'show'
+  end
+
+  def tree
+    @r ||= Repository.find(params[:id])
+    raise "Cannot see" unless @r.user == current_user
+    @grit = @r.grit
+    @tree = @grit.tree(params[:treeid])
   end
 
   def blob
@@ -45,9 +47,9 @@ class RepositoriesController < ApplicationController
   def commits
     @r ||= Repository.find(params[:id])
     raise "Cannot see" unless @r.user == current_user
-    @branch ||= params[:branch]
+    @branch = params[:branch]
     @grit = @r.grit
-    @commits = @grit.commits
+    @commits = @grit.commits(@branch)
   end
 
   def commit
