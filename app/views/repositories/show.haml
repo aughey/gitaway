@@ -1,5 +1,8 @@
 = render :partial => 'preamble'
 
+- unless @r.user == current_user
+  = button_to("Create a Fork","/repositories/#{@r.id}/fork")
+
 - if @tree.is_a?(Grit::Blob)
   = render :partial => 'blob', :object => @tree
 - elsif @tree.is_a?(Grit::Tree)

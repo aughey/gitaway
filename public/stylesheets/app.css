@@ -3,6 +3,12 @@ body {
   text-align:center;
 }
 
+.notmine {
+  background-color: #ffeeee;
+  border: 1px dotted black;
+  padding: 1em;
+}
+
 .rlinks li {
   display: inline;
   list-style-type;

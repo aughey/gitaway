@@ -4,8 +4,7 @@ class RepositoriesController < ApplicationController
   end
 
   def show
-    @r ||= Repository.find(params[:id])
-    raise "Cannot see" unless @r.user == current_user
+    getr
     @branch = params[:branch]
     @branch ||= 'master'
     @grit = @r.grit
@@ -20,16 +19,23 @@ class RepositoriesController < ApplicationController
     @path = params[:path] ? "/" + params[:path] : ""
   end
 
+  def fork
+    getr
+    r = Repository.create(:name => @r.name, :fork_id => @r.id, :user => current_user)
+
+    system("cd #{@r.git_path} ; git push #{r.git_path} master")
+    
+    redirect_to r
+  end
+
   def tree
-    @r ||= Repository.find(params[:id])
-    raise "Cannot see" unless @r.user == current_user
+    getr
     @grit = @r.grit
     @tree = @grit.tree(params[:treeid])
   end
 
   def blob
-    @r ||= Repository.find(params[:id])
-    raise "Cannot see" unless @r.user == current_user
+    getr
     @branch ||= params[:branch]
     @grit = @r.grit
     @blob = @grit.blob(params[:blobid])
@@ -37,16 +43,14 @@ class RepositoriesController < ApplicationController
   end
 
   def commits
-    @r ||= Repository.find(params[:id])
-    raise "Cannot see" unless @r.user == current_user
+    getr
     @branch = params[:branch]
     @grit = @r.grit
     @commits = @grit.commits(@branch)
   end
 
   def commit
-    @r ||= Repository.find(params[:id])
-    raise "Cannot see" unless @r.user == current_user
+    getr
     @grit = @r.grit
     @commit = @grit.commit(params[:commit])
   end
@@ -58,5 +62,15 @@ class RepositoriesController < ApplicationController
     r.save!
 
     redirect_to r
+  end
+
+  protected
+  def getr
+    @r ||= Repository.find(params[:id])
+    raise "Cannot see" unless @r.is_viewable_by?(current_user)
+    if @r.user != current_user
+      @contentclass = "notmine"
+    end
+    @r
   end
 end

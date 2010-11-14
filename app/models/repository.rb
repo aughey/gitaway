@@ -5,6 +5,10 @@ class Repository < ActiveRecord::Base
     name
   end
 
+  def is_viewable_by?(user)
+    self.public || user == self.user
+  end
+
   def path
     "/repositories/#{id}"
   end
@@ -18,9 +22,7 @@ class Repository < ActiveRecord::Base
     system("cd #{git_path} ; git init --bare")
   end
 
-  protected
-
   def git_path
-    "./REPOS/#{id}.git"
+    "/home/jha/src/current/gitaway/REPOS/#{id}.git"
   end
 end

@@ -10,15 +10,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101113193910) do
+ActiveRecord::Schema.define(:version => 20101114202004) do
 
-  create_table "repositories", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "name"
-    t.integer  "user_id"
-    t.text     "description"
-  end
+# Could not dump table "repositories" because of following StandardError
+#   Unknown type 'bool' for column 'public'
 
   create_table "users", :force => true do |t|
     t.string   "email"

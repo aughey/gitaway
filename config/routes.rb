@@ -80,6 +80,7 @@ Gitaway::Application.routes.draw do
   match 'repositories/:id/blob/:blobid', :controller => 'repositories', :action => 'blob'
   match 'repositories/:id/commits/:branch', :controller => 'repositories', :action => 'commits'
   match 'repositories/:id/commit/:commit', :controller => 'repositories', :action => 'commit'
+  match 'repositories/:id/fork', :controller => 'repositories', :action => 'fork'
   match 'repositories/:id', :controller => 'repositories', :action => 'show'
   match 'repositories/:id/:branch', :controller => 'repositories', :action => 'show'
   match 'repositories/:id/:branch/*path', :controller => 'repositories', :action => 'show'
