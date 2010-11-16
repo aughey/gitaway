@@ -1,7 +1,7 @@
 %p= link_to "Create a new repository","/repositories/new"
 
-%h1 Your Repositories
+%h1 All Users
 
 %ul
-  - for r in current_user.repositories
-    %li= l(r)
+  - for u in @users
+    %li= l(u)

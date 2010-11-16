@@ -37,10 +37,10 @@ included.
 * * Trees
 * Collaboration
 * * Forking
-* * Multi-user access to repositories
+* * Multi-user commit access to repositories
 * Repository Access
 * * SSH through SSH public keys
-* * Read-only http
+* * Read-only http fetches
 
 ## Non-Features
 

@@ -9,6 +9,14 @@ class Repository < ActiveRecord::Base
     self.public || user == self.user
   end
 
+  def forked?
+    fork_id
+  end
+
+  def fork
+    @fork ||= Repository.find(fork_id)
+  end
+
   def path
     "/repositories/#{id}"
   end

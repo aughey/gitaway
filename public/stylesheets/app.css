@@ -1,12 +1,5 @@
 body {
-  margin:50px 0px; padding:0px;
   text-align:center;
-}
-
-.notmine {
-  background-color: #ffeeee;
-  border: 1px dotted black;
-  padding: 1em;
 }
 
 .rlinks li {
@@ -29,10 +22,40 @@ body {
   padding: 1em;
 }
 
-#Content {
-  width:950px;
-  margin:0px auto;
+#titlebar {
   text-align:left;
+  background-color: #eee;
+  padding: 1.5em;
+  border-bottom: 1px solid black;
+}
+
+#titlebar h1 {
+  font-size: 150%;
+}
+
+.notmine {
+  background-color: #ffdddd;
+}
+
+#content {
+  border: 1px dotted black;
+  padding: 1em;
+  width:950px;
+  position: relative;
+  top: -1em;
+  border-top: 1px solid black;
+  margin:0px auto;
+  padding: 0.5em;
+  text-align:left;
+  background-color: white;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+.rlinks,.branches,.title, .logininfo {
+  margin-bottom: 1em;
 }
 
 table {

@@ -12,8 +12,15 @@
 
 ActiveRecord::Schema.define(:version => 20101114202004) do
 
-# Could not dump table "repositories" because of following StandardError
-#   Unknown type 'bool' for column 'public'
+  create_table "repositories", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "name"
+    t.integer  "user_id"
+    t.text     "description"
+    t.boolean  "public",      :default => true
+    t.integer  "fork_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email"
