@@ -30,8 +30,8 @@ every feature.  Only the most commonly used tasks (as defined by me) are
 included.
 
 * User Repositories
-* * Public Repositories
-* * Private Repositories
+ * Public Repositories
+ * Private Repositories
 * Repository Navigation
 * * Branches
 * * Trees
