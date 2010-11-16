@@ -30,17 +30,17 @@ every feature.  Only the most commonly used tasks (as defined by me) are
 included.
 
 * User Repositories
-* * Public Repositories
-* * Private Repositories
+    * Public Repositories
+    * Private Repositories
 * Repository Navigation
-* * Branches
-* * Trees
+    * Branches
+    * Trees
 * Collaboration
-* * Forking
-* * Multi-user commit access to repositories
+    * Forking
+* * Multi-user access to repositories
 * Repository Access
-* * SSH through SSH public keys
-* * Read-only http fetches
+    * SSH through SSH public keys
+    * Read-only http
 
 ## Non-Features
 
