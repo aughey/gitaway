@@ -1,5 +1,7 @@
 class SshKey < ActiveRecord::Base
   belongs_to :user
+  validates_presence_of :name,:key
+
   def after_create
     SshKey::generate_authorized_keys
   end
