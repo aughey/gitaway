@@ -61,15 +61,17 @@ class Repository < ActiveRecord::Base
       next if f == '..'
       globalpath = Repository::global_objects_directory + "/#{f}"
       Dir.mkdir(globalpath) unless File.directory?(globalpath)
-      Dir.foreach(git_path + '/objects/' + f) do |f2|
+      dir = git_path + '/objects/' + f
+      Dir.foreach(dir) do |f2|
         next if f2 == '..' || f2 == '.'
         newpath = Repository::global_objects_directory + "/#{f}/#{f2}" 
-        oldpath = git_path + "/objects/#{f}/#{f2}"
+        oldpath = dir + "/#{f2}"
         unless File.exists?(newpath)
           puts "Moving #{oldpath} to #{newpath}"
           File.rename(oldpath,newpath)
         end
       end
+      Dir.rmdir dir
     end
   end
 
