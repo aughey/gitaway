@@ -23,7 +23,7 @@ class RepositoriesController < ApplicationController
     getr
     r = Repository.create(:name => @r.name, :fork_id => @r.id, :user => current_user)
 
-    system("cd #{@r.git_path} ; git push #{r.git_path} master")
+    r.fork_from(@r)
     
     redirect_to r
   end
@@ -60,6 +60,7 @@ class RepositoriesController < ApplicationController
     r.user = current_user
 
     r.save!
+    r.init_bare
 
     redirect_to r
   end

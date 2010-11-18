@@ -26,9 +26,14 @@ class Repository < ActiveRecord::Base
     @grit ||= Grit::Repo.new(git_path)
   end
 
-  def after_create
+  def init_bare
     FileUtils.mkdir_p(git_path)
     system("cd #{git_path} ; git init --bare")
+  end
+
+  def fork_from(other)
+    # FileUtils.mkdir_p(git_path)
+    system("git clone --bare --shared #{other.git_path} #{git_path}")
   end
 
   def git_path

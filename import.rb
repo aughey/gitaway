@@ -11,6 +11,7 @@ for d in ARGV
     u = users.pop
     users.unshift u
     r = u.repositories.create(:name => File::basename(d))
+    r.init_bare
     g = Grit::Repo.new(d)
     for b in g.branches
       system("cd #{d} ; git push /home/jha/src/current/gitaway/REPOS/#{r.id}.git #{b.name}")
