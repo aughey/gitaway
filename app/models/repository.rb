@@ -50,9 +50,7 @@ class Repository < ActiveRecord::Base
     rescue
     end
 
-    puts "Writing alternates file for #{id}"
-
-    File.open(alternates_file,"w+") do |f|
+    File.open(alternates_file,"a+") do |f|
       f.puts Repository::global_objects_directory
     end
   end
@@ -71,7 +69,6 @@ class Repository < ActiveRecord::Base
           puts "Moving #{oldpath} to #{newpath}"
           File.rename(oldpath,newpath)
         end
-        File.unlink(oldpath)
       end
     end
   end
