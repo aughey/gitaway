@@ -92,3 +92,8 @@ table td {
 .tree table td {
   background-color: #dddddd;
 }
+
+.title h1 {
+  font-size: 150%;
+  font-weight: bold;
+}

@@ -1,10 +1,10 @@
 .title{:class => @contentclass || ""}
   %h1== #{l(@r.user)} / #{l(@r)}
   - if @r.forked?
-    == forked from #{link_to("#{@r.fork.user}/#{@r.fork}",@r.fork)}
+    %p== forked from #{link_to("#{@r.fork.user}/#{@r.fork}",@r.fork)}
 
   - if @r.user == current_user
-    == Your git URL is #{@r.url}
+    %p== Your git URL is #{@r.url}
 
 - if @branch
 .rlinks
