@@ -32,9 +32,9 @@ class Repository < ActiveRecord::Base
     set_alternate_directory
   end
 
-  def fork_from(other)
+  def fork_from(other,branch = 'master')
     # FileUtils.mkdir_p(git_path)
-    system("git clone --bare --shared #{other.git_path} #{git_path}")
+    system("git clone --bare --shared -b #{branch} #{other.git_path} #{git_path}")
     set_alternate_directory
   end
 
@@ -66,7 +66,9 @@ class Repository < ActiveRecord::Base
         next if f2 == '..' || f2 == '.'
         newpath = Repository::global_objects_directory + "/#{f}/#{f2}" 
         oldpath = dir + "/#{f2}"
-        unless File.exists?(newpath)
+        if  File.exists?(newpath)
+          File.unlink(oldpath)
+        else
           puts "Moving #{oldpath} to #{newpath}"
           File.rename(oldpath,newpath)
         end
