@@ -1,0 +1,5 @@
+To setup a GitAway system...
+
+1. Create a new gitaway user account.
+2. Extract these sources to that account.
+3. Run the rails server and resolve any Gem dependices.
