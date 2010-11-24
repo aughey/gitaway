@@ -1,0 +1,7 @@
+= link_to "Create a new key",new_ssh_key_path
+
+%h1 Your ssh keys
+
+%ul
+  - for k in @keys
+    %li= k.name + "=" + k.key

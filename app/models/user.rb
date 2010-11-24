@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   include Clearance::User
   has_many :repositories
+  has_many :ssh_keys
+  has_many :git_commands
 
   def to_s
     email

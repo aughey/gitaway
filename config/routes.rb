@@ -74,6 +74,8 @@ Gitaway::Application.routes.draw do
 
   resources :u, :controller => 'u'
 
+  resources :ssh_keys
+
   resources :repositories
 
   match 'repositories/:id/tree/:treeid', :controller => 'repositories', :action => 'tree'

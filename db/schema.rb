@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101114202004) do
+ActiveRecord::Schema.define(:version => 20101124210545) do
+
+  create_table "git_commands", :force => true do |t|
+    t.string   "in_command"
+    t.string   "out_command"
+    t.integer  "user_id"
+    t.integer  "repository_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "repositories", :force => true do |t|
     t.datetime "created_at"
@@ -20,6 +29,14 @@ ActiveRecord::Schema.define(:version => 20101114202004) do
     t.text     "description"
     t.boolean  "public",      :default => true
     t.integer  "fork_id"
+  end
+
+  create_table "ssh_keys", :force => true do |t|
+    t.string   "name"
+    t.string   "key"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

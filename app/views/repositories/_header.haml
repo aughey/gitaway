@@ -3,6 +3,9 @@
   - if @r.forked?
     == forked from #{link_to("#{@r.fork.user}/#{@r.fork}",@r.fork)}
 
+  - if @r.user == current_user
+    == Your git URL is #{@r.url}
+
 - if @branch
 .rlinks
   %p= link_to("View commits","#{@r.path}/commits/#{@branch}")

@@ -1,5 +1,6 @@
 class Repository < ActiveRecord::Base
   belongs_to :user
+  has_many :git_commands
 
   def to_s
     name
@@ -31,6 +32,10 @@ class Repository < ActiveRecord::Base
   end
 
   def git_path
-    "/home/jha/src/current/gitaway/REPOS/#{id}.git"
+    Dir.pwd + "/REPOS/#{id}.git"
+  end
+
+  def url
+    "ssh://#{ENV['USER']}@localhost#{git_path}"
   end
 end

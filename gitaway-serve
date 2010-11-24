@@ -1,0 +1,41 @@
+#!/usr/local/bin/ruby
+
+path = File.dirname($0)
+Dir.chdir(path)
+
+require './config/environment.rb'
+
+ENV['PATH'] = "/usr/local/bin:" + ENV['PATH']
+
+command,repopath = ENV['SSH_ORIGINAL_COMMAND'].to_s.split(' ')
+
+allowed_commands = ['git-receive-pack','git-upload-pack']
+
+unless allowed_commands.include? command
+  puts "Not an allowed command"
+  exit 1
+end
+
+user = User.find(ARGV[0])
+
+if user.nil?
+  puts "Unknown user"
+  exit 2
+end
+
+unless repopath =~ /\/([0-9]+)\.git[']*$/
+  puts "Invalid repository"
+  exit 3
+end
+
+repo_id = $1
+repo = Repository.find(repo_id)
+
+if repo.nil?
+  puts "Repository not found"
+  exit 4
+end
+
+GitCommand.create(:user => user, :repository => repo, :in_command => ENV['SSH_ORIGINAL_COMMAND'], :out_command => "#{command} #{repo.git_path}")
+
+exec([command,command],repo.git_path)

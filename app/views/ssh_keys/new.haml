@@ -1,0 +1,7 @@
+%h1 Creating a new ssh_key
+- semantic_form_for @key do |form|
+  - form.inputs do
+    = form.input :name
+    = form.input :key, :as => :text
+  - form.buttons do
+    = form.commit_button
